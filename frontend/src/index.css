@@ -1,0 +1,287 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Space Grotesk", sans-serif;
+    --font-body: "DM Sans", sans-serif;
+    --font-mono: "Geist Mono", monospace;
+    --radius: 0.125rem;
+
+    /* Dark palette — enforced as the only palette */
+    --background: 0.08 0.01 260;
+    --foreground: 0.94 0.01 260;
+    --card: 0.12 0.015 260;
+    --card-foreground: 0.94 0.01 260;
+    --popover: 0.15 0.015 260;
+    --popover-foreground: 0.94 0.01 260;
+
+    --primary: 0.55 0.22 25;
+    --primary-foreground: 0.94 0.01 25;
+
+    --secondary: 0.72 0.18 75;
+    --secondary-foreground: 0.08 0.01 75;
+    --muted: 0.18 0.015 260;
+    --muted-foreground: 0.55 0.01 260;
+
+    --accent: 0.72 0.18 75;
+    --accent-foreground: 0.08 0.01 75;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.94 0.01 25;
+
+    --border: 0.22 0.01 260;
+    --input: 0.22 0.01 260;
+    --ring: 0.55 0.22 25;
+
+    --chart-1: 0.55 0.22 25;
+    --chart-2: 0.72 0.18 75;
+    --chart-3: 0.65 0.18 145;
+    --chart-4: 0.5 0.15 280;
+    --chart-5: 0.65 0.2 40;
+
+    --sidebar: 0.12 0.015 260;
+    --sidebar-foreground: 0.94 0.01 260;
+    --sidebar-primary: 0.55 0.22 25;
+    --sidebar-primary-foreground: 0.94 0.01 25;
+    --sidebar-accent: 0.72 0.18 75;
+    --sidebar-accent-foreground: 0.08 0.01 75;
+    --sidebar-border: 0.22 0.01 260;
+    --sidebar-ring: 0.55 0.22 25;
+  }
+
+  /* .dark mirrors :root — tokens are always dark, class just satisfies Tailwind dark: utilities */
+  .dark {
+    --background: 0.08 0.01 260;
+    --foreground: 0.94 0.01 260;
+    --card: 0.12 0.015 260;
+    --card-foreground: 0.94 0.01 260;
+    --popover: 0.15 0.015 260;
+    --popover-foreground: 0.94 0.01 260;
+
+    --primary: 0.55 0.22 25;
+    --primary-foreground: 0.94 0.01 25;
+
+    --secondary: 0.72 0.18 75;
+    --secondary-foreground: 0.08 0.01 75;
+    --muted: 0.18 0.015 260;
+    --muted-foreground: 0.55 0.01 260;
+
+    --accent: 0.72 0.18 75;
+    --accent-foreground: 0.08 0.01 75;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.94 0.01 25;
+
+    --border: 0.22 0.01 260;
+    --input: 0.22 0.01 260;
+    --ring: 0.55 0.22 25;
+
+    --chart-1: 0.55 0.22 25;
+    --chart-2: 0.72 0.18 75;
+    --chart-3: 0.65 0.18 145;
+    --chart-4: 0.5 0.15 280;
+    --chart-5: 0.65 0.2 40;
+
+    --sidebar: 0.12 0.015 260;
+    --sidebar-foreground: 0.94 0.01 260;
+    --sidebar-primary: 0.55 0.22 25;
+    --sidebar-primary-foreground: 0.94 0.01 25;
+    --sidebar-accent: 0.72 0.18 75;
+    --sidebar-accent-foreground: 0.08 0.01 75;
+    --sidebar-border: 0.22 0.01 260;
+    --sidebar-ring: 0.55 0.22 25;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/SpaceGrotesk.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("/assets/fonts/DMSans.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/assets/fonts/GeistMono.woff2") format("woff2");
+  font-display: swap;
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .status-critical {
+    @apply bg-destructive text-destructive-foreground;
+  }
+
+  .status-warning {
+    @apply bg-secondary text-secondary-foreground;
+  }
+
+  .status-safe {
+    @apply bg-chart-3 text-foreground;
+  }
+
+  .heat-map-critical {
+    fill: oklch(var(--destructive));
+  }
+
+  .heat-map-warning {
+    fill: oklch(var(--secondary));
+  }
+
+  .heat-map-safe {
+    fill: oklch(var(--chart-3));
+  }
+
+  .emergency-badge {
+    @apply px-2 py-1 text-xs font-bold tracking-wider uppercase rounded-sm;
+  }
+
+  .alert-pulse {
+    animation: alert-pulse 2s infinite;
+  }
+
+  .bg-grid-pattern {
+    background-image: linear-gradient(
+        oklch(var(--border) / 0.6) 1px,
+        transparent 1px
+      ), linear-gradient(90deg, oklch(var(--border) / 0.6) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  @keyframes alert-pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+
+  /* Fire warning banner — fast red/dark-red flash */
+  @keyframes fire-banner-flash {
+    0%,
+    100% {
+      background-color: oklch(0.45 0.22 25);
+      box-shadow: 0 0 24px oklch(0.55 0.25 25 / 0.5);
+    }
+    50% {
+      background-color: oklch(0.3 0.18 25);
+      box-shadow: 0 0 40px oklch(0.65 0.28 25 / 0.7);
+    }
+  }
+  .fire-banner-flash {
+    animation: fire-banner-flash 0.8s ease-in-out infinite;
+  }
+
+  /* Enhanced fire glow pulse — CSS-driven for primary-threat rooms */
+  @keyframes fire-pulse-ring {
+    0%,
+    100% {
+      opacity: 0.9;
+      filter: blur(2px);
+    }
+    50% {
+      opacity: 0.25;
+      filter: blur(6px);
+    }
+  }
+  .fire-pulse-ring {
+    animation: fire-pulse-ring 0.7s ease-in-out infinite;
+  }
+
+  /* Room fill flicker — slight hue variation */
+  @keyframes fire-fill-flicker {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    30% {
+      opacity: 0.88;
+    }
+    60% {
+      opacity: 0.95;
+    }
+    80% {
+      opacity: 0.82;
+    }
+  }
+  .fire-fill-flicker {
+    animation: fire-fill-flicker 0.5s steps(3) infinite;
+  }
+
+  /* Smoke particle float */
+  @keyframes smoke-rise {
+    0% {
+      transform: translateY(0) scaleX(1);
+      opacity: 0.45;
+    }
+    100% {
+      transform: translateY(-14px) scaleX(1.4);
+      opacity: 0;
+    }
+  }
+  .smoke-particle {
+    animation: smoke-rise 1.8s ease-out infinite;
+  }
+  .smoke-particle-2 {
+    animation: smoke-rise 1.8s ease-out 0.6s infinite;
+  }
+  .smoke-particle-3 {
+    animation: smoke-rise 1.8s ease-out 1.2s infinite;
+  }
+
+  /* Fire detection pulse — pulsing red border + glow on FireVideoDetector card when active */
+  @keyframes detection-pulse-ring {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 oklch(0.55 0.22 25 / 0.5), 0 0 16px 2px
+        oklch(0.55 0.22 25 / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 0 4px oklch(0.55 0.22 25 / 0.15), 0 0 32px 6px
+        oklch(0.65 0.25 25 / 0.5);
+    }
+  }
+  .detection-pulse {
+    animation: detection-pulse-ring 1s ease-in-out infinite;
+  }
+
+  /* Monitoring badge — green dot + "LIVE" text */
+  .monitoring-badge {
+    background-color: oklch(0.65 0.18 145 / 0.12);
+    color: oklch(0.65 0.18 145);
+    border: 1px solid oklch(0.65 0.18 145 / 0.35);
+  }
+
+  /* Countdown timer urgent blink when <60s */
+  @keyframes countdown-urgent {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+  .countdown-urgent {
+    animation: countdown-urgent 0.5s ease-in-out infinite;
+  }
+}
