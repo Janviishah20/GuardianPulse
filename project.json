@@ -1,0 +1,23 @@
+{
+  "overview": "GuardianPulse is a real-time fire emergency response system that monitors live video feeds for fire and smoke, automatically triggers evacuation protocols, and guides occupants to safety using an interactive floor plan, voice instructions, and alarm systems.",
+  "features": [
+    "Real-time video fire detection using Gemini Vision AI",
+    "Live webcam feed with fire/smoke bounding box overlay",
+    "Auto-triggered evacuation pipeline on fire detection",
+    "Interactive 3-floor building floor plan with threat heatmap",
+    "Escape route calculation with animated visual paths",
+    "Voice evacuation instructions and fire alarm audio",
+    "Fire simulator for drill testing",
+    "User authentication with Internet Identity",
+    "Rescue manifest with room-by-room status"
+  ],
+  "category": "productivity",
+  "tags": [
+    "fire-safety",
+    "emergency-response",
+    "ai-detection",
+    "computer-vision",
+    "building-management"
+  ],
+  "last_updated": "2026-04-28T12:12:26.713Z"
+}
