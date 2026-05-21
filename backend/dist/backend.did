@@ -1,0 +1,77 @@
+type http_request_result = 
+ record {
+   body: blob;
+   headers: vec http_header;
+   status: nat;
+ };
+type http_header = 
+ record {
+   name: text;
+   value: text;
+ };
+type TransformationOutput = 
+ record {
+   body: blob;
+   headers: vec http_header;
+   status: nat;
+ };
+type TransformationInput = 
+ record {
+   context: blob;
+   response: http_request_result;
+ };
+type ThreatResult = 
+ record {
+   confidence: nat;
+   rawResponse: text;
+   severity: text;
+   threatType: text;
+   timestamp: int;
+ };
+type RoomData = 
+ record {
+   cameraId: text;
+   floor: nat;
+   id: text;
+   isCorridor: bool;
+   isExit: bool;
+   name: text;
+   neighbors: vec text;
+ };
+service : {
+  classifyAudio: (audioBase64: text, mimeType: text) ->
+   (variant {
+      err: text;
+      ok: ThreatResult;
+    });
+  classifyImage: (imageBase64: text, mimeType: text, roomId: text) ->
+   (variant {
+      err: text;
+      ok: ThreatResult;
+    });
+  computeEscapePath: (startRoom: text, blockedRooms: vec text) ->
+   (variant {
+      err: text;
+      ok: vec text;
+    }) query;
+  generateEvacuationInstruction: (roomId: text, path: vec text) ->
+   (variant {
+      err: text;
+      ok: text;
+    });
+  generateTTS: ("text": text) -> (variant {
+                                    err: text;
+                                    ok: text;
+                                  });
+  getFloorPlan: () -> (vec RoomData) query;
+  getLatestThreat: () -> (opt ThreatResult) query;
+  getOccupiedRooms: () -> (vec text) query;
+  getSimulatorState: () -> (opt ThreatResult) query;
+  resetSimulator: () -> ();
+  setGeminiApiKey: (key: text) -> ();
+  setGoogleTtsApiKey: (key: text) -> ();
+  setOccupied: (roomId: text, occupied: bool) -> ();
+  simulateFire: (roomId: text) -> ();
+  transform: (input: TransformationInput) -> (TransformationOutput) query;
+  whoami: () -> (text) query;
+}
