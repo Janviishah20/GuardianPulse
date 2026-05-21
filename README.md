@@ -1,21 +1,46 @@
-#Guardian Pulse
-A modern web application focused on secure authentication, user management, and smooth user experience. Guardian Pulse provides a clean and responsive interface with reliable login functionality and scalable frontend architecture.
+🛡️ Guardian Pulse
+A modern full-stack web application focused on secure authentication, user management, and a smooth user experience.
 
 🚀 Live Demo
-🌐 :https://guardian-pulse-six.vercel.app/login
+https://guardian-pulse-six.vercel.app/intro
 
-📌 Features
-🔐 Secure Login Authentication
-📱 Fully Responsive Design
-⚡ Fast Performance with Modern Frameworks
-🎨 Clean and Minimal UI
-🌙 Smooth User Experience
+✨ Features
+🔐 Secure Authentication (Login / Signup)
+
+👤 User Management System
+
+🛡️ Protected Routes
+
+⚡ Fast and Responsive UI
+
+🎨 Clean & Minimal Design
+
 ☁️ Deployed on Vercel
+
 🛠️ Tech Stack
 Frontend
+
 React.js
+
 Tailwind CSS
+
 JavaScript
+
+Backend
+
+Node.js
+
+Express.js
+
+Database
+
+MongoDB
+
 Deployment
+
 Vercel
-Thank you, Regards, Janvi Shah
+
+
+Thank You
+
+Janvi Shah
